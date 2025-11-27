@@ -1,0 +1,268 @@
+/* --- Container --- */
+.ot-container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 0 20px;
+    font-family: 'Inter', sans-serif;
+    color: #1f2937;
+    animation: fadeIn 0.6s ease-out;
+}
+
+/* --- Shared Card Style --- */
+.ot-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    box-shadow: 0 10px 30px -10px rgba(0,0,0,0.08);
+    border: 1px solid #f3f4f6;
+    margin-bottom: 25px;
+    transition: transform 0.3s ease;
+}
+
+.ot-card:hover {
+    transform: translateY(-3px);
+}
+
+/* --- Header Card --- */
+.header-card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.ot-back-btn {
+    background: #f3f4f6;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 30px;
+    cursor: pointer;
+    font-weight: 600;
+    color: #4b5563;
+    transition: background 0.2s;
+}
+
+.ot-back-btn:hover { background: #e5e7eb; }
+
+.ot-header-content { text-align: center; }
+
+.ot-header-content h1 {
+    margin: 0;
+    font-size: 1.8rem;
+    font-weight: 800;
+}
+
+.ot-order-id {
+    margin: 0;
+    color: #6b7280;
+    font-size: 0.95rem;
+}
+
+.ot-status-badge {
+    background: #ecfdf5;
+    color: #059669;
+    padding: 8px 16px;
+    border-radius: 20px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+}
+
+/* --- Layout Grid --- */
+.ot-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 25px;
+}
+
+@media (max-width: 768px) {
+    .ot-grid { grid-template-columns: 1fr; }
+    .header-card { flex-direction: column; gap: 15px; text-align: center; }
+}
+
+/* --- Timeline Section --- */
+.ot-timeline {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20px;
+}
+
+.ot-step {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    position: relative;
+    padding-bottom: 35px;
+}
+
+.ot-step:last-child { padding-bottom: 0; }
+
+.ot-icon-box {
+    width: 50px;
+    height: 50px;
+    background: #f3f4f6;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.3rem;
+    z-index: 2;
+    transition: all 0.3s ease;
+    border: 4px solid white; /* Border creates space for line overlap */
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* --- STATES --- */
+
+/* Completed Step (Past) - Solid Green */
+.ot-step.completed .ot-icon-box {
+    background: #10b981; 
+    color: white;
+}
+
+/* Current Step (Active Animation) - Orange Pulse */
+.ot-step.current .ot-icon-box {
+    background: #f59e0b; /* Active Orange */
+    color: white;
+    transform: scale(1.1);
+    box-shadow: 0 0 0 rgba(245, 158, 11, 0.4);
+    
+    /* ✅ KEY ANIMATION TRIGGER */
+    animation: pulse-orange 1.5s infinite; 
+}
+
+.ot-step-content {
+    padding-top: 12px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.ot-label {
+    font-weight: 600;
+    color: #9ca3af;
+    font-size: 1rem;
+    transition: color 0.3s;
+}
+
+.ot-step.completed .ot-label {
+    color: #10b981; /* Green Text */
+    font-weight: 700;
+}
+
+.ot-step.current .ot-label {
+    color: #f59e0b; /* Orange Text */
+    font-weight: 800;
+    font-size: 1.05rem;
+}
+
+.ot-check {
+    color: #10b981;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.ot-processing {
+    color: #f59e0b;
+    font-weight: bold;
+    animation: blink 1.5s infinite;
+}
+
+/* Connecting Line */
+.ot-line {
+    position: absolute;
+    left: 23px; /* Center of 50px icon */
+    top: 50px;
+    bottom: 0;
+    width: 4px;
+    background: #f3f4f6;
+    z-index: 1;
+    border-radius: 2px;
+}
+
+.ot-step:last-child .ot-line { display: none; }
+
+.ot-line.line-active {
+    background: #10b981; /* Green Line for finished path */
+    transition: background 0.5s ease;
+}
+
+/* --- Details Section --- */
+.details-card h2, .timeline-card h2 {
+    margin-top: 0;
+    font-size: 1.3rem;
+    margin-bottom: 25px;
+    color: #111;
+    font-weight: 700;
+}
+
+.ot-detail-row {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #f3f4f6;
+}
+
+.ot-detail-row:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.ot-detail-icon {
+    font-size: 1.5rem;
+    background: #fff7ed;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+}
+
+.ot-detail-row label {
+    display: block;
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    color: #9ca3af;
+    font-weight: 700;
+    margin-bottom: 4px;
+}
+
+.ot-detail-row p {
+    margin: 0;
+    font-weight: 600;
+    color: #374151;
+    font-size: 1rem;
+}
+
+.ot-amount {
+    font-size: 1.3rem;
+    color: #059669 !important;
+    font-weight: 800 !important;
+}
+
+/* --- ANIMATION KEYFRAMES --- */
+
+@keyframes pulse-orange {
+    0% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 12px rgba(245, 158, 11, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(245, 158, 11, 0);
+    }
+}
+
+@keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+}
