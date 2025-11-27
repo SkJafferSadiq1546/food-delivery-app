@@ -1,0 +1,20 @@
+# --- Dependencies (files we can re-download) ---
+node_modules/
+.mvn/wrapper/
+
+# --- Build Outputs (files generated when running code) ---
+target/
+build/
+dist/
+
+# --- Secrets & Environment Variables (Never upload these!) ---
+.env
+
+# --- System & IDE Files (Junk files) ---
+.DS_Store
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
